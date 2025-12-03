@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Xml;
 
@@ -149,24 +150,90 @@ namespace bosh
 
 */
 
-    class Wizard
+    /*
+     class Wizard
+     {
+         int mp;
+         int intell;
+         public Wizard()
+         {
+             mp = 50;
+             intell = 100;
+         }
+
+         static void Main()
+         {
+             Wizard wizard= new Wizard();
+             Console.WriteLine($"mp:{wizard.mp},int:{wizard.intell}");
+         }
+
+     }
+    */
+
+
+    abstract class Animal
     {
-        int mp;
-        int intell;
-        public Wizard()
-        {
-            mp = 50;
-            intell = 100;
 
-        }
-
-        static void Main()
+        public Animal(string Name)
         {
-            Wizard wizard= new Wizard();
-            Console.WriteLine($"mp:{wizard.mp},int:{wizard.intell}");
+            
         }
+        public abstract void MakeSound();
 
     }
-}
 
+    class Dog : Animal
+    {
+        public Dog(string Name) : base(Name)
+        {
+            Console.WriteLine($"안녕하세요 저는{Name}입니다");
+        }
+
+        public override void MakeSound()
+        {
+            Console.WriteLine("멍멍~");
+
+        }
+    }
+    class Cat : Animal
+    {
+        public Cat(string Name) : base(Name)
+        {
+            Console.WriteLine($"안녕하세요 저는{Name}입니다");
+        }
+        public override void MakeSound()
+        {
+            Console.WriteLine("야옹~");
+
+        }
+    }
+    class Cow : Animal
+    {
+        public Cow(string Name) : base(Name)
+        {
+            Console.WriteLine($"안녕하세요 저는{Name}입니다");
+        }
+        public override void MakeSound()
+        {
+
+            Console.WriteLine("음머~");
+        }
+
+    
+
+    static void Main()
+        {
+           
+            Dog dog = new Dog("dog");
+            dog.MakeSound();
+
+            Cat cat = new Cat("cat");
+            cat.MakeSound();
+
+            Cow cow = new Cow("cow");
+            cow.MakeSound();
+
+        }
+    }
+}
 
