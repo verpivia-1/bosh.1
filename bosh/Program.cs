@@ -2,37 +2,87 @@
 
 namespace bosh
 {
-  
-    internal class Program
+    class Program
     {
-        static int Test(int a, int b)
+        enum ClassType
         {
+            None,
+            Knight,
+            Mage,
+            Rogue
+        }
 
-            if (a > b)
-            {
-                return 0;
-            }
-            return a + Test(a + 1, b);
-        }
-        /*
-        static int SubTest(int a, int b)
+        static ClassType ClassChoice()
         {
-            int Calamity = Test(a,b);
-            Test(a,b);
-            
-            return Calamity;
+            Console.WriteLine("직업을 선택하세요!");
+            Console.WriteLine("[1] 기사");
+            Console.WriteLine("[2] 마법사");
+            Console.WriteLine("[3] 도둑");
+
+            ClassType choice = ClassType.None;
+            string input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "1":
+                    choice = ClassType.Knight;
+                    break;
+                case "2":
+                    choice = ClassType.Mage;
+                    break;
+                case "3":
+                    choice = ClassType.Rogue;
+                    break;
+            }
+
+            return choice;
         }
-        */
-        
+
+        static void CreatePlayer(ClassType choice, out int hp, out int atk)
+        {
+            switch (choice) 
+            {
+                case ClassType.Knight:
+                    hp = 100;
+                    atk = 10;
+                    break;
+                case ClassType.Mage:
+                    hp = 50;
+                    atk = 15;
+                    break;
+                case ClassType.Rogue:
+                    hp = 75;
+                    atk = 12;
+                    break;
+                default:
+                    hp = 0;
+                    atk = 0;
+                    break;
+            }
+            // 기사(100/10), 마법사(50/15), 도둑(75/12)
+        }
+
         static void Main(string[] args)
         {
-            int[] Arrow = new int[2];
-            Arrow[0] = 1;
-            Arrow[1] = 6;
+            ClassType choice = ClassType.None;
 
-            int resurt = Test(Arrow[0], Arrow[1]);
-            Console.WriteLine(resurt);
+            while (true)
+            {
+                choice = ClassChoice();
+                if (choice != ClassType.None)
+                {
+                    // 캐릭터 생성
+                    int hp;
+                    int atk;
+                    CreatePlayer(choice, out hp, out atk);
+
+                    Console.WriteLine($"HP {hp}, ATK {atk}");
+                }
+                else
+                {
+                    Console.WriteLine("정해진 범위 내에서 선택하세요");
+                }
+            }
         }
     }
-   
 }
