@@ -8,12 +8,11 @@ namespace bosh
         static int Test(int a, int b)
         {
 
-            int sum=0;
-            for (int i=a; i<=b; i++)
+            if (a > b)
             {
-                sum+=i;
+                return 0;
             }
-            return sum;
+            return a + Test(a + 1, b);
         }
         /*
         static int SubTest(int a, int b)
