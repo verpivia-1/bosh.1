@@ -170,18 +170,13 @@ namespace bosh
      }
     */
 
-
     abstract class Animal
     {
-
         public Animal(string Name)
         {
-            
         }
         public abstract void MakeSound();
-
     }
-
     class Dog : Animal
     {
         public Dog(string Name) : base(Name)
@@ -218,13 +213,13 @@ namespace bosh
 
             Console.WriteLine("음머~");
         }
-
-    
-
-    static void Main()
+    }
+    public class FookingRazerSite
+    {
+        static void Main()
         {
-           
-            Dog dog = new Dog("dog");
+
+            Animal dog = new Dog("dog");
             dog.MakeSound();
 
             Cat cat = new Cat("cat");
@@ -236,4 +231,3 @@ namespace bosh
         }
     }
 }
-
