@@ -5,20 +5,34 @@ namespace bosh
   
     internal class Program
     {
-        static void Swap(ref int a,ref int b)
+        static int Test(int a, int b)
         {
-            int c = a;
-            a = b;
-            b = c;
-            
+
+            int sum=0;
+            for (int i=a; i<=b; i++)
+            {
+                sum+=i;
+            }
+            return sum;
         }
+        /*
+        static int SubTest(int a, int b)
+        {
+            int Calamity = Test(a,b);
+            Test(a,b);
+            
+            return Calamity;
+        }
+        */
+        
         static void Main(string[] args)
         {
-            int x = 10;
-            int y = 20;
-            Swap(ref x,ref y);
-            Console.WriteLine($"{x},{y}");
+            int[] Arrow = new int[2];
+            Arrow[0] = 1;
+            Arrow[1] = 6;
 
+            int resurt = Test(Arrow[0], Arrow[1]);
+            Console.WriteLine(resurt);
         }
     }
 }
