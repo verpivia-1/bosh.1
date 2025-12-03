@@ -1,7 +1,21 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+using System.Xml;
 
 namespace bosh
 {
+    /*
+    struct Player()
+    {
+        public int hp;
+        public int atk;
+    }
+
+    struct Monster()
+    {
+        public int hp;
+        public int atk;
+    }
     class Program
     {
         enum ClassType
@@ -10,6 +24,15 @@ namespace bosh
             Knight,
             Mage,
             Rogue
+        }
+
+        enum MonsterType
+        { 
+            None,
+            Slime,
+            Skletone,
+            Orc,
+            YourMother
         }
 
         static ClassType ClassChoice()
@@ -38,51 +61,112 @@ namespace bosh
             return choice;
         }
 
-        static void CreatePlayer(ClassType choice, out int hp, out int atk)
+        static void CreatePlayer(ClassType choice, out Player player)
         {
+            
             switch (choice) 
             {
                 case ClassType.Knight:
-                    hp = 100;
-                    atk = 10;
+                    player.hp = 100;
+                    player.atk = 10;
                     break;
                 case ClassType.Mage:
-                    hp = 50;
-                    atk = 15;
+                    player.hp = 50;
+                    player.atk = 15;
                     break;
                 case ClassType.Rogue:
-                    hp = 75;
-                    atk = 12;
+                    player.hp = 75;
+                    player.atk = 12;
                     break;
                 default:
-                    hp = 0;
-                    atk = 0;
+                    player.hp = 0;
+                    player.atk = 0;
                     break;
             }
             // 기사(100/10), 마법사(50/15), 도둑(75/12)
         }
 
+        static void CreateMonster(MonsterType type,out Monster monster)
+        {
+            Random mob = new Random();
+            MonsterType radom = (MonsterType)mob.Next(1, 5);
+            switch (radom)
+                {
+                case MonsterType.Slime:
+                    monster.hp = 20;
+                    monster.atk = 2;
+                    break;
+
+                case MonsterType.Skletone:
+                    monster.hp = 40;
+                    monster.atk = 4;
+                    break;
+
+                case MonsterType.Orc:
+                    monster.hp = 30;
+                    monster.atk = 3;
+                    break;
+
+                case MonsterType.YourMother:
+                    monster.hp = 99999;
+                    monster.atk = 99999;
+                    break;
+                default :
+                    monster.hp = 0;
+                    monster.atk = 0;
+                    break;
+            }
+            Console.WriteLine($"{monster.hp},{monster.atk}");
+
+        }
+
         static void Main(string[] args)
         {
             ClassType choice = ClassType.None;
+            MonsterType monster = MonsterType.None;
+
+            Player player ;
+            Monster monsterrand ;
 
             while (true)
             {
                 choice = ClassChoice();
+                
+
                 if (choice != ClassType.None)
                 {
                     // 캐릭터 생성
-                    int hp;
-                    int atk;
-                    CreatePlayer(choice, out hp, out atk);
+                   
+                    CreatePlayer(choice, out player);
 
-                    Console.WriteLine($"HP {hp}, ATK {atk}");
+                    Console.WriteLine($"HP {player.hp}, ATK {player.atk}");
                 }
-                else
-                {
-                    Console.WriteLine("정해진 범위 내에서 선택하세요");
-                }
+               
             }
         }
     }
 }
+
+*/
+
+    class Wizard
+    {
+        int mp;
+        int intell;
+        public Wizard()
+        {
+            mp = 50;
+            intell = 100;
+
+        }
+
+        static void Main()
+        {
+            Wizard wizard= new Wizard();
+            Console.WriteLine($"mp:{wizard.mp},int:{wizard.intell}");
+        }
+
+    }
+}
+
+
